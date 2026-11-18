@@ -64,7 +64,7 @@ footer{text-align:center;color:#51615f;font-size:14px;padding:10px;font-weight:7
 <body>
 <header>
   <h1>منشئ ألعاب «مَزُون» التعليمية</h1>
-  <p>اكتبي بيانات لعبتك واضغطي «تحميل اللعبة»، فتنزل لك لعبة كاملة في ملف واحد</p>
+  <p>اكتب بيانات لعبتك واضغط «تحميل اللعبة»، فتنزل لك لعبة كاملة في ملف واحد</p>
 </header>
 <main>
   <section>
@@ -79,7 +79,7 @@ footer{text-align:center;color:#51615f;font-size:14px;padding:10px;font-weight:7
 
   <section>
     <h2>2) الألوان</h2>
-    <p class="hint">اختاري مجموعة ألوان جاهزة، أو عدّلي الألوان بنفسك.</p>
+    <p class="hint">اختر مجموعة ألوان جاهزة، أو عدّل الألوان بنفسك.</p>
     <div class="pal" id="pal"></div>
     <div class="cols">
       <div><label for="c_main">لون الأزرار</label><input type="color" id="c_main"></div>
@@ -91,11 +91,11 @@ footer{text-align:center;color:#51615f;font-size:14px;padding:10px;font-weight:7
 
   <section>
     <h2>3) الأسئلة</h2>
-    <p class="hint">من سؤالين إلى 10 أسئلة. تظهر الأسئلة على كتل «؟»، والسؤال الأخير عند البوابة. حدّدي الإجابة الصحيحة بالدائرة.</p>
+    <p class="hint">من سؤالين إلى 10 أسئلة. تظهر الأسئلة على كتل «؟»، والسؤال الأخير عند البوابة. حدّد الإجابة الصحيحة بالدائرة.</p>
     <div class="bulk">
-      <label for="bulk">الطريقة السريعة: الصقي أسئلتك كلها دفعة واحدة</label>
+      <label for="bulk">الطريقة السريعة: الصق أسئلتك كلها دفعة واحدة</label>
       <textarea id="bulk" rows="7" placeholder="السؤال 1: نص السؤال&#10;• الخيار الأول&#10;• الخيار الثاني ✔&#10;• الخيار الثالث&#10;&#10;السؤال 2 (صح أو خطأ): نص العبارة ✔ صح"></textarea>
-      <p class="hint">اكتبي كل سؤال بعد كلمة «السؤال»، وخياراته في أسطر تبدأ بنقطة، وضعي ✔ بعد الإجابة الصحيحة. وسؤال صح وخطأ اكتبي بعده «✔ صح» أو «✔ خطأ». يمكنك أيضًا أن تطلبي من أي برنامج ذكاء اصطناعي كتابة أسئلتك بهذه الصيغة ثم تلصقينها هنا. ويمكن لصق «اسم اللعبة:» و«الشعار:» و«المادة والصف:» في أول النص.</p>
+      <p class="hint">اكتب كل سؤال بعد كلمة «السؤال»، وخياراته في أسطر تبدأ بنقطة، وضع ✔ بعد الإجابة الصحيحة. وسؤال صح وخطأ اكتب بعده «✔ صح» أو «✔ خطأ». يمكنك أيضًا أن تطلب من أي برنامج ذكاء اصطناعي كتابة أسئلتك بهذه الصيغة ثم تلصقها هنا. ويمكن لصق «اسم اللعبة:» و«الشعار:» و«المادة والصف:» في أول النص.</p>
       <div class="row"><button class="btn alt" id="bBulk" type="button">إدخال الأسئلة من النص</button></div>
     </div>
     <div id="qs"></div>
@@ -151,7 +151,7 @@ function render(){
     let h='<div class="top"><span class="no">السؤال '+(i+1)+(q.type==='tf'?' (صح أو خطأ)':'')+'</span><button class="rm" type="button" data-i="'+i+'">حذف</button></div>';
     h+='<label>'+(q.type==='tf'?'العبارة':'نص السؤال')+'</label><textarea class="qt" rows="2">'+esc(q.q)+'</textarea>';
     if(q.type==='mc'){
-      h+='<label>الخيارات (حدّدي الصحيح بالدائرة)</label>';
+      h+='<label>الخيارات (حدّد الصحيح بالدائرة)</label>';
       q.opts.forEach((o,j)=>{h+='<div class="opt"><input type="radio" name="r'+i+'" value="'+j+'"'+(q.ans===j?' checked':'')+' aria-label="الإجابة الصحيحة"><input type="text" class="ot" value="'+esc(o)+'" placeholder="الخيار '+(j+1)+'">'+(q.opts.length>2?'<button class="rm" type="button" data-qo="'+i+','+j+'" aria-label="حذف الخيار">×</button>':'')+'</div>'});
       if(q.opts.length<4)h+='<button class="btn ghost" type="button" data-ao="'+i+'" style="padding:6px 14px;font-size:14px;box-shadow:none">+ خيار</button>';
     }else{
@@ -180,17 +180,17 @@ function show(t,ok){const m=$('#msg');m.textContent=t;m.className='msg'+(ok?' ok
 function collect(){
   sync();
   const title=$('#title').value.trim(),sub=$('#sub').value.trim(),course=$('#course').value.trim();
-  if(!title)return {err:'اكتبي اسم اللعبة.'};
-  if(qs.length<2)return {err:'أضيفي سؤالين على الأقل.'};
+  if(!title)return {err:'اكتب اسم اللعبة.'};
+  if(qs.length<2)return {err:'أضف سؤالين على الأقل.'};
   const list=[];
   for(let i=0;i<qs.length;i++){
     const q=qs[i],t=q.q.trim();
-    if(!t)return {err:'اكتبي نص السؤال '+(i+1)+'.'};
+    if(!t)return {err:'اكتب نص السؤال '+(i+1)+'.'};
     let it;
     if(q.type==='tf'){it={q:t,tf:q.ans===0}}
     else{
       const o=q.opts.map(x=>x.trim());
-      if(o.some(x=>!x))return {err:'أكملي خيارات السؤال '+(i+1)+'.'};
+      if(o.some(x=>!x))return {err:'أكمل خيارات السؤال '+(i+1)+'.'};
       it={q:t,options:o,answer:q.ans}
     }
     if(q.img)it.img=q.img;
@@ -213,7 +213,7 @@ $('#pvClose').onclick=()=>{$('#pv').classList.remove('on');$('#pvf').srcdoc=''};
 $('#bDl').onclick=()=>{const r=collect();if(r.err)return show(r.err);
   const blob=new Blob([make(r.settings)],{type:'text/html'}),a=document.createElement('a');
   a.href=URL.createObjectURL(blob);a.download='index.html';document.body.appendChild(a);a.click();a.remove();
-  show('تم تحميل اللعبة باسم index.html. لنشرها على الآيباد أو الهاتف ارفعيها على GitHub Pages.',1)};
+  show('تم تحميل اللعبة باسم index.html. لنشرها على الآيباد أو الهاتف ارفعها على GitHub Pages.',1)};
 
 function parseBulk(txt){
   const AR='٠١٢٣٤٥٦٧٨٩';
@@ -261,22 +261,22 @@ function parseBulk(txt){
 }
 function bulkInsert(){
   const t=$('#bulk').value.trim();
-  if(!t)return show('الصقي الأسئلة في المربع أولًا.');
+  if(!t)return show('الصق الأسئلة في المربع أولًا.');
   const r=parseBulk(t),list=[],warn=[];
   r.qs.forEach((q,i)=>{
     const n=i+1;
     if(!q.q){warn.push('السؤال '+n+' بلا نص.');return}
-    if(q.tf){list.push({type:'tf',q:q.q,ans:q.ans<0?0:q.ans,img:''});if(!q.marked)warn.push('السؤال '+n+' (صح أو خطأ): لم تُحدَّد الإجابة، وضعتُ «صح»، فراجعيها.');return}
+    if(q.tf){list.push({type:'tf',q:q.q,ans:q.ans<0?0:q.ans,img:''});if(!q.marked)warn.push('السؤال '+n+' (صح أو خطأ): لم تُحدَّد الإجابة، وضعتُ «صح»، فراجعها.');return}
     if(q.opts.length<2){warn.push('السؤال '+n+' يحتاج خيارين على الأقل، فتجاوزته.');return}
     if(q.opts.length>4){warn.push('السؤال '+n+': أكثر من 4 خيارات، أبقيت الأربعة الأولى.');q.opts=q.opts.slice(0,4);if(q.ans>3)q.ans=-1}
-    if(q.ans<0){warn.push('السؤال '+n+': لم تُحدَّد الإجابة الصحيحة (✔)، فوضعت الأول مؤقتًا، فراجعيها.');q.ans=0}
+    if(q.ans<0){warn.push('السؤال '+n+': لم تُحدَّد الإجابة الصحيحة (✔)، فوضعت الأول مؤقتًا، فراجعها.');q.ans=0}
     list.push({type:'mc',q:q.q,opts:q.opts,ans:q.ans,img:''});
   });
-  if(!list.length)return show('لم أجد أسئلة في النص. اكتبي كل سؤال بعد كلمة «السؤال» مع خياراته.');
+  if(!list.length)return show('لم أجد أسئلة في النص. اكتب كل سؤال بعد كلمة «السؤال» مع خياراته.');
   if(list.length>10){warn.push('الحد الأقصى 10 أسئلة، أُدخلت أول 10.');list.length=10}
   if(r.title)$('#title').value=r.title;if(r.sub)$('#sub').value=r.sub;if(r.course)$('#course').value=r.course;
   qs=list;render();
-  show('تم إدخال '+(list.length===1?'سؤال واحد':list.length===2?'سؤالين':list.length+' أسئلة')+'. راجعيها في الأسفل ثم عاينيها.'+(warn.length?' ملاحظات: '+warn.join(' '):''),!warn.length);
+  show('تم إدخال '+(list.length===1?'سؤال واحد':list.length===2?'سؤالين':list.length+' أسئلة')+'. راجعها في الأسفل ثم عاينها.'+(warn.length?' ملاحظات: '+warn.join(' '):''),!warn.length);
   document.getElementById('qs').scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('#bBulk').onclick=bulkInsert;

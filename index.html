@@ -43,6 +43,9 @@ input[type=color]{width:100%;height:44px;border:1.5px solid var(--line);border-r
 .imgrow{margin-top:8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .imgrow img{max-height:70px;border-radius:8px;border:1px solid var(--line)}
 .imgrow small{color:#6b7a7c}
+.imgrow .imgbtn{display:inline-flex;align-items:center;gap:8px;margin:0;border:2px dashed var(--main);border-radius:12px;padding:9px 14px;font-weight:700;color:var(--teal);cursor:pointer;background:#fffdf7}
+.imgrow .imgbtn input{display:none}
+.imgrow img{max-height:90px}
 button.btn{background:var(--main);color:#fff;border:0;border-radius:12px;padding:12px 20px;font:inherit;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 3px 0 #a9621c}
 button.btn.alt{background:var(--teal);box-shadow:0 3px 0 #0a3f3e}
 button.btn.ghost{background:#fff;color:var(--teal);border:2px solid var(--teal);box-shadow:none}
@@ -171,7 +174,7 @@ function render(){
     }else{
       h+='<label>الإجابة الصحيحة</label><div class="opt"><input type="radio" name="r'+i+'" value="0"'+(q.ans===0?' checked':'')+'> <b>صح</b></div><div class="opt"><input type="radio" name="r'+i+'" value="1"'+(q.ans===1?' checked':'')+'> <b>خطأ</b></div>';
     }
-    h+='<div class="imgrow"><input type="file" accept="image/*" class="im" data-i="'+i+'">'+(q.img?'<img src="'+q.img+'" alt=""><button class="rm" type="button" data-ri="'+i+'">إزالة الصورة</button>':'<small>صورة مع السؤال (اختياري)</small>')+'</div>';
+    h+='<div class="imgrow"><label class="imgbtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>'+(q.img?'تغيير الصورة':'إضافة صورة للسؤال (اختياري)')+'</span><input type="file" accept="image/*" class="im" data-i="'+i+'"></label>'+(q.img?'<img src="'+q.img+'" alt=""><button class="rm" type="button" data-ri="'+i+'">إزالة الصورة</button>':'')+'</div>';
     d.innerHTML=h;box.appendChild(d);
   });
   box.querySelectorAll('.rm[data-i]').forEach(b=>b.onclick=()=>{sync();qs.splice(+b.dataset.i,1);render()});
